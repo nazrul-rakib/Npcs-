@@ -31,6 +31,16 @@
       height: 50px;
     }
 
+    .imglogo{
+       background-color: #fff;
+       height: 85px;
+       width: 85px;
+       border-radius: 50%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+
     .info {
       flex: 1;
       text-align: center;
@@ -78,13 +88,23 @@
       }
       .info .school-name {
       margin: 0 2px;
-      font-size: 17px;
+      font-size: 15px;
     }
 
       .logo {
         width: 30px;
         height: 40px;
       }
+
+      .imglogo{
+       background-color: #fff;
+       height: 65px;
+       width: 65px;
+       border-radius: 50%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
 
       .right-section img {
         width: 30px;
