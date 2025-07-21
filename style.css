@@ -17,8 +17,6 @@
 
     .container {
       display: flex;
-      flex-wrap: wrap;
-      
     }
 
     .main {
@@ -26,15 +24,16 @@
       background: white;
       padding: 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
 
     .sidebar {
-      flex: 1;
-      background: #ddd;
+       width: 300px;
       padding: 20px;
       min-width: 180px;
+      background: rgb(136, 126, 126);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -57,13 +56,254 @@
         flex-direction: column;
       }
     }
-    /*====================================================main header ses====================================================*/
+    /*==================================================== main  css ====================================================*/
+/*==============================================মেইন হেডার শুরু =================================================*/   
+nav {
+      background: #0f2379;
+      color: white;
+      padding: 12px 20px;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    ul.nav-links li a i {
+  margin-right: 8px;
+}
+
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+    }
+
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1px;
+      padding: 0;
+      transition: all 0.4s ease;
+    }
+
+    ul.nav-links li {
+      width: 100%;
+      max-width: 320px;
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: fadeSlide 0.6s forwards;
+      margin: 0px;
+    }
+
+    ul.nav-links li:nth-child(1) { animation-delay: 0.1s; }
+    ul.nav-links li:nth-child(2) { animation-delay: 0.3s; }
+    ul.nav-links li:nth-child(3) { animation-delay: 0.5s; }
+    ul.nav-links li:nth-child(4) { animation-delay: 0.7s; }
+    ul.nav-links li:nth-child(5) { animation-delay: 0.8s; }
+    ul.nav-links li:nth-child(6) { animation-delay: 0.9s; }
+    ul.nav-links li:nth-child(7) { animation-delay: 1s; }
+    ul.nav-links li:nth-child(8) { animation-delay: 1.1s; }
+    ul.nav-links li:nth-child(9) { animation-delay: 1.1s; }
+
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    ul.nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    ul.nav-links li a:hover {
+      background: #1e3cd1;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transform: scale(1.03);
+    }
+
+    /* -------- Responsive (Mobile) -------- */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      ul.nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        display: none;
+      }
+
+      ul.nav-links.show {
+        display: flex;
+      }
+    }
+
+    /* -------- Desktop Fix for Center -------- */
+    @media (min-width: 769px) {
+      ul.nav-links li {
+        max-width: unset;
+        width: auto;
+      }
+      
+          ul.nav-links li a i {
+      margin-right: 3px;
+    }
+
+      ul.nav-links li a {
+        padding: 10px 16px;
+        text-align: center;
+        border-radius: 6px;
+      }
+    }
+/*==============================================মেইন হেডার শেষ=================================================*/
+/*==============================================5 image slide start=================================================*/
+    /* ডিফল্ট বড় স্ক্রিন (700px উপরে) */
+    .slider-container {
+      width: 100%;
+      height: 400px;
+      max-width: 1000px;
+      margin: 0px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      opacity: 60%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .typing-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: baseline;
+      backdrop-filter: blur(3px);
+      font-size: 32px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .static {
+      margin-right: 10px;
+      font-size: 32px;
+    }
+
+    .dynamic {
+      white-space: nowrap;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      position: relative;
+      line-height: 2.2em;
+    }
+
+    .dynamic span {
+      padding: 6px 0px;
+    }
+
+    .dynamic::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 1px;
+      height: 18px;
+      background-color: #333;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Text color + stroke effect */
+    .text-red {
+      color: #e91e63;
+      
+    }
+
+    .text-blue {
+      color: #eeff00;
+     
+    }
+
+    .text-green {
+      color: #0dfc19;
+      
+    }
+
+    /* মোবাইল/ছোট স্ক্রিন (700px বা নিচে) */
+    @media (max-width: 700px) {
+      .slider-container {
+        height: 240px;
+      }
+      .typing-overlay {
+        font-size: 20px;
+        padding: 6px 14px;
+        margin: 10px;
+      }
+      .static {
+        font-size: 18px;
+      }
+    }
+
+    /* বড় স্ক্রিন (1200px বা তার উপরে) */
+    @media (min-width: 1200px) {
+      .slider-container {
+        height: 500px;
+      }
+      .typing-overlay {
+        font-size: 40px;
+        padding: 14px 30px;
+      }
+      .static {
+        font-size: 40px;
+      }
+    }
+/*==============================================5 image slide end=================================================*/
     /*==============================================কতৃপক্ষ শুরু==============================================*/
       .card {
-      width: 100%x;
+      width: 230px;
       background: linear-gradient(to bottom, #e0f7fa, #ffffff);
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border: 1px solid black;
       overflow: hidden;
       text-align: center;
       color: #333;
@@ -113,12 +353,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       text-decoration: none;
       color: white;
-      font-size: 22px;
+      font-size: 20px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -131,4 +371,4 @@
       transform: scale(1.1);
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
-    /*==============================================কতৃপক্ষ শেষ=================================================*/
+        /*==============================================কতৃপক্ষ শেষ=================================================*/    

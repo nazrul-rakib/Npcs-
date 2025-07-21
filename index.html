@@ -5,30 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>NPCS Shibram</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!--================================================= হেডার অংশ শুরু ==============================================-->
     <header>
       <div id="header-placeholder"></div>
-      <!--মেইন ডিভ-->
+      <!-------মেইন হেডার শুরু----->
+      <nav>
+        <div class="nav-container">
+          <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+          <li>
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-user"></i> Student</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-cogs"></i> Abashik</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-image"></i> Teacher</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-blog"></i> Staf</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-newspaper"></i>Notice</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-envelope"></i> Gallery</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-sign-in-alt"></i> About</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-sign-in-alt"></i> Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <!-------মেইন হেডার শেষ----->
     </header>
     <!--================================================= হেডার অংশ শেষ ==============================================-->
 
     <div class="container">
       <!--================================================= মেইন অংশ শুরু ==============================================-->
       <div class="main">
-        <h3>Main</h3>
+        <!--================================================= 5 pic slide start ==============================================-->
+        <div class="slider-container">
+          <div class="slides" id="slides">
+            <div class="slide">
+              <img src="image/sclpic/slide1.JPG" alt="1" />
+            </div>
+            <div class="slide">
+              <img src="image/sclpic/slide2.jpg" alt="2" />
+            </div>
+            <div class="slide">
+              <img src="image/sclpic/slide3.jpg" alt="3" />
+            </div>
+            <div class="slide">
+              <img src="image/sclpic/slide4.jpg" alt="4" />
+            </div>
+            <div class="slide">
+              <img src="image/sclpic/slide5.jpg" alt="5" />
+            </div>
+          </div>
+
+          <div class="typing-overlay">
+            <span class="static">একটি</span>
+            <span class="dynamic" id="typing"></span>
+          </div>
+        </div>
+
+        <section>
+          <h3 style="color: black;">rakib</h3>
+        </section>
+        <!--================================================= 5 pic slide end ==============================================-->
       </div>
       <!--================================================= মেইন অংশ শেষ ==============================================-->
       <!--================================================= স্লাইডার অংশ শুরু ==============================================-->
       <div class="sidebar">
         <div class="card">
-          <img src="logo.jpg" alt="Profile Photo" />
-          <h2>খন্দকার মোঃ রাশেদীন ইসলাম</h2>
-          <h4>উপাধ্যক্ষ</h4>
+          <img src="image/sir/bina-medam.png" alt="Profile Photo" />
+          <h2>মোছাঃ আায়েশা সিদ্দিকা</h2>
+          <h4>প্রতিষ্ঠাতা</h4>
           <p>
             "একটি জাতিকে উন্নতির শিখরে পৌঁছাতে হলে প্রথমে শিশুকে সুশিক্ষিত করতে
-            হয়। আমাদের বিদ্যালয় শুধু পাঠ্যপুস্তকের জ্ঞান নয়, 
+            হয়। আমাদের বিদ্যালয় শুধু পাঠ্যপুস্তকের জ্ঞান নয়,
           </p>
 
           <div class="icons">
@@ -42,8 +113,8 @@
           <h2>খন্দকার মোঃ রাশেদীন ইসলাম</h2>
           <h4>উপাধ্যক্ষ</h4>
           <p>
-           আমাদের বিদ্যালয় শুধু পাঠ্যপুস্তকের জ্ঞান নয়, শিশুদের মধ্যে
-            নৈতিকতা, মানবতা ও দায়িত্ববোধের আলো ছড়াতে অঙ্গীকারবদ্ধ।"
+            আমাদের বিদ্যালয় শুধু পাঠ্যপুস্তকের জ্ঞান নয়, শিশুদের মধ্যে নৈতিকতা,
+            মানবতা ও দায়িত্ববোধের আলো ছড়াতে অঙ্গীকারবদ্ধ।"
           </p>
 
           <div class="icons">
