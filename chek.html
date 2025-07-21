@@ -1,211 +1,27 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <title>Looping Slider with Typing</title>
+  <meta charset="UTF-8">
+  <title>Notice Marquee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      font-family: 'Noto Sans Bengali', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans Bengali', sans-serif;
+    }
+
+    body {
       background: #f4f4f4;
     }
 
-    /* ডিফল্ট বড় স্ক্রিন (700px উপরে) */
-    .slider-container {
-      width: 100%;
-      height: 400px;
-      max-width: 1000px;
-      margin: 20px auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-
-    .slides {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      transition: transform 1s ease-in-out;
-    }
-
-    .slide {
-      min-width: 100%;
-      height: 100%;
-      opacity: 60%;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .typing-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: baseline;
-      backdrop-filter: blur(3px);
-      font-size: 32px;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .static {
-      margin-right: 10px;
-      font-size: 32px;
-    }
-
-    .dynamic {
-      white-space: nowrap;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      position: relative;
-      line-height: 2.2em;
-    }
-
-    .dynamic span {
-      padding: 6px 0px;
-    }
-
-    .dynamic::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      width: 1px;
-      height: 18px;
-      background-color: #333;
-      animation: blink 0.8s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    /* Text color + stroke effect */
-    .text-red {
-      color: #e91e63;
-      
-    }
-
-    .text-blue {
-      color: #eeff00;
-     
-    }
-
-    .text-green {
-      color: #0dfc19;
-      
-    }
-
-    /* মোবাইল/ছোট স্ক্রিন (700px বা নিচে) */
-    @media (max-width: 700px) {
-      .slider-container {
-        height: 240px;
-      }
-      .typing-overlay {
-        font-size: 20px;
-        padding: 6px 14px;
-        margin: 10px;
-      }
-      .static {
-        font-size: 18px;
-      }
-    }
-
-    /* বড় স্ক্রিন (1200px বা তার উপরে) */
-    @media (min-width: 1200px) {
-      .slider-container {
-        height: 500px;
-      }
-      .typing-overlay {
-        font-size: 40px;
-        padding: 14px 30px;
-      }
-      .static {
-        font-size: 40px;
-      }
-    }
+    
   </style>
-
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <div class="slider-container">
-    <div class="slides" id="slides">
-      <div class="slide"><img src="image/sclpic/slide1.JPG" alt="1" /></div>
-      <div class="slide"><img src="image/sclpic/slide2.jpg" alt="2" /></div>
-      <div class="slide"><img src="image/sclpic/slide3.jpg" alt="3" /></div>
-      <div class="slide"><img src="image/sclpic/slide4.jpg" alt="4" /></div>
-      <div class="slide"><img src="image/sclpic/slide5.jpg" alt="5" /></div>
-    </div>
+  
 
-    <div class="typing-overlay">
-      <span class="static">একটি</span>
-      <span class="dynamic" id="typing"></span>
-    </div>
-  </div>
-
-  <script>
-    // Typing effect
-    const words = [
-      { text: "আবাসিক প্রতিষ্ঠান", class: "text-red" },
-      { text: "অনাবাসিক প্রতিষ্ঠান", class: "text-blue" },
-      { text: "ডে-কেয়ার প্রতিষ্ঠান", class: "text-green" },
-    ];
-
-    let i = 0,
-      j = 0,
-      currentWord = "",
-      isDeleting = false;
-    const typingEl = document.getElementById("typing");
-
-    function type() {
-      const wordObj = words[i];
-      currentWord = wordObj.text;
-
-      if (!isDeleting) {
-        j++;
-      } else {
-        j--;
-      }
-
-      const displayText = currentWord.substring(0, j);
-      typingEl.innerHTML = `<span class="${wordObj.class}">${displayText}</span>`;
-
-      let speed = isDeleting ? 50 : 120;
-
-      if (!isDeleting && j === currentWord.length) {
-        speed = 1000;
-        isDeleting = true;
-      } else if (isDeleting && j === 0) {
-        isDeleting = false;
-        i = (i + 1) % words.length;
-        speed = 500;
-      }
-
-      setTimeout(type, speed);
-    }
-
-    type();
-
-    // Looping Slider
-    const slides = document.getElementById("slides");
-    let index = 0;
-    const total = slides.children.length;
-
-    setInterval(() => {
-      index = (index + 1) % total;
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }, 4000);
-  </script>
 </body>
 </html>
