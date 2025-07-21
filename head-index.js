@@ -67,3 +67,50 @@ document.addEventListener("DOMContentLoaded", function () {
       slides.style.transform = `translateX(-${index * 100}%)`;
     }, 4000);
 /* =========================================5 image slide end ========================================*/
+/* ========================================= Calender starrt ========================================*/
+ function renderCalendar() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const today = date.getDate();
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      const calendarDays = document.getElementById("calendarDays");
+      const monthYear = document.getElementById("monthYear");
+
+      const monthNames = [
+        "জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন",
+        "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"
+      ];
+
+      monthYear.textContent = `${monthNames[month]} ${year}`;
+      calendarDays.innerHTML = "";
+
+      // Empty days before 1st date
+      for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+        const emptyDiv = document.createElement("div");
+        calendarDays.appendChild(emptyDiv);
+      }
+
+      // Date cells
+      for (let day = 1; day <= lastDate; day++) {
+        const div = document.createElement("div");
+        div.textContent = day;
+        div.className = "day-num";
+
+        if (
+          day === today &&
+          month === new Date().getMonth() &&
+          year === new Date().getFullYear()
+        ) {
+          div.classList.add("today");
+        }
+
+        calendarDays.appendChild(div);
+      }
+    }
+
+    renderCalendar();
+/* ========================================= Calender end ========================================*/
