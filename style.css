@@ -7,8 +7,18 @@
 
     body {
       background: #f4f4f4;
+      margin: 0px;
+      padding: 0px;
     }
 
+     /* font start */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Fjalla+One&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+.hind-siliguri-semibold {
+  font-family: "Hind Siliguri", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+} 
+/* font end */
     header {
       background-color: #3b5998;
       color: white;
@@ -26,13 +36,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+          margin: 0px;
+      padding: 0px;  
    
     }
 
     .sidebar {
     
       padding: 20px;
-      background: rgb(219, 217, 217);
+      background: rgb(255, 255, 255);
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -365,7 +377,7 @@ nav {
     /* মোবাইল/ছোট স্ক্রিন (700px বা নিচে) */
     @media (max-width: 700px) {
       .slider-container {
-        height: 240px;
+        height: 200px;
       }
       .typing-overlay {
         font-size: 20px;
@@ -391,6 +403,76 @@ nav {
       }
     }
 /*==============================================5 image slide end=================================================*/
+/*============================================== Notice start =================================================*/
+.notice-board {
+        width: 100%;
+        background-color: #cfd1ec;
+        border-left: 10px solid #042d79;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        margin: 10px 15px;
+        transform: translateX(-100%);
+        animation: slideIn 1.2s ease forwards;
+        animation-delay: 1s;
+      }
+
+      @keyframes slideIn {
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .notice-board h2 {
+        padding: 10px;
+        margin-top: 0;
+        color: #ffffff;
+        background-color: #042d79;
+        text-align: center;
+        border-top-right-radius: 10px;
+      }
+
+      .notice-board h3 {
+        padding: 10px;
+        margin: 0;
+        color: #000000;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .notice-board ul {
+        padding-left: 25px;
+        padding-top: 8px;
+        padding-bottom: 12px;
+        margin: 0;
+      }
+
+      .notice-board li {
+        font-size: 13px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #c75100;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+      .custom-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .custom-list li::before {
+        content: "✔ ";
+        color: green;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+/*============================================== Notice end =================================================*/
 /*============================================== Calender start=================================================*/
 .calendar {
       background: white;
@@ -458,7 +540,7 @@ nav {
       }
     }
 /*==============================================Calender end=================================================*/
-/*==============================================কতৃপক্ষ শুরু==============================================*/
+/*============================================== kortipokkho শুরু==============================================*/
    .kortipokkho {
       display: flex;
       flex-wrap: wrap;
@@ -477,10 +559,14 @@ nav {
       text-align: center;
       transition: 0.3s;
       box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      display: flex;
+  flex-direction: column;
+  justify-content: space-between;
     }
 
     .card:hover {
       transform: translateY(-5px);
+      background-color: #caee00;
     }
 
     .top1 {
@@ -524,10 +610,11 @@ nav {
       padding-top: 60px;
       padding-bottom: 0;
       padding-inline: 20px;
+      flex-grow: 1;
     }
 
     .card h2 {
-      font-size: 18px;
+      font-size: 15px;
       margin-bottom: 5px;
     }
 
@@ -549,13 +636,14 @@ nav {
       border-top: 1px solid #ddd;
       display: flex;
       justify-content: center;
+      height: 50px;
       gap: 20px;
       border-radius: 0 0 20px 20px;
     }
 
     .socials a {
       text-decoration: none;
-      color: #d40000;
+      color: #1b84da;
       font-size: 18px;
       transition: 0.2s;
     }
@@ -569,4 +657,4 @@ nav {
         width: 90%;
       }
     }
-/*==============================================কতৃপক্ষ শেষ=================================================*/    
+/*============================================== kortipokkho শেষ=================================================*/    

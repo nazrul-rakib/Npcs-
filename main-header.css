@@ -9,6 +9,16 @@
       font-family: Arial, sans-serif;
     }
 
+    
+     /* font start */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Fjalla+One&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+.hind-siliguri-semibold {
+  font-family: "Hind Siliguri", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+} 
+/* font end */
+
     /* ✅ Wrapper to limit full-width stretch */
     .header-wrapper {
       background-color: #3b6ea5;
@@ -54,7 +64,11 @@
       font-size: 35px;
       font-weight: 500;
     }
+    .school-name{
+        font-family: "Hind Siliguri", sans-serif;
+        font-weight: 900;
 
+    }
     .right-section {
       display: flex;
       align-items: center;
