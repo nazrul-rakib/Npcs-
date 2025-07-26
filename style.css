@@ -6,11 +6,25 @@
     }
 
     body {
-      background: #f4f4f4;
       margin: 0px;
       padding: 0px;
     }
 
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('image/sclpic/main-bg.png');
+  background-repeat: repeat;
+  background-size: 200px 240px;
+  background-position: top left;
+  opacity: 0.2; /* শুধু ছবির opacity কমানো হলো */
+  z-index: -1; /* কনটেন্টের নিচে থাকবে */
+  pointer-events: none; /* যেন ইউজার interaction না আটকায় */
+}
      /* font start */
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Fjalla+One&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 .hind-siliguri-semibold {
@@ -27,6 +41,11 @@
 
     .container {
       display: flex;
+      max-width: 1100px;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+       margin: 0 auto; 
        flex-wrap: wrap;
     }
 
@@ -41,19 +60,18 @@
    
     }
 
-    .sidebar {
-    
-      padding: 20px;
-      background: rgb(255, 255, 255);
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-  min-width: 250px;
-  max-width: 300px;  /* যেন খুব বড় না হয় */
+  .sidebar {
+  background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-       
+  justify-content: flex-start;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  align-self: flex-start; /* 🆕 এই লাইন টা নতুন */
+}
 
-    }
 
     footer {
       background: #333;
@@ -63,18 +81,17 @@
       width: 100%;
     }
 
-    /* Responsive design */
-    @media (max-width: 700px) {
-      .container {
-        flex-direction: column;
-      }
-    }
-   
 @media (max-width: 700px) {
-  .container {
+  .sidebar {
+    width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    height: auto;
   }
+}
+
 
   .main {
     width: 100%;
@@ -94,7 +111,6 @@
     width: 100%;
     text-align: center;
   }
-}
 
 /*==================================================== main  css ====================================================*/
 /*==============================================মেইন হেডার শুরু =================================================*/   
@@ -144,14 +160,14 @@ nav {
     }
 
     ul.nav-links li:nth-child(1) { animation-delay: 0.1s; }
-    ul.nav-links li:nth-child(2) { animation-delay: 0.3s; }
-    ul.nav-links li:nth-child(3) { animation-delay: 0.5s; }
-    ul.nav-links li:nth-child(4) { animation-delay: 0.7s; }
-    ul.nav-links li:nth-child(5) { animation-delay: 0.8s; }
-    ul.nav-links li:nth-child(6) { animation-delay: 0.9s; }
-    ul.nav-links li:nth-child(7) { animation-delay: 1s; }
-    ul.nav-links li:nth-child(8) { animation-delay: 1.1s; }
-    ul.nav-links li:nth-child(9) { animation-delay: 1.1s; }
+    ul.nav-links li:nth-child(2) { animation-delay: 0.2s; }
+    ul.nav-links li:nth-child(3) { animation-delay: 0.3s; }
+    ul.nav-links li:nth-child(4) { animation-delay: 0.4s; }
+    ul.nav-links li:nth-child(5) { animation-delay: 0.5s; }
+    ul.nav-links li:nth-child(6) { animation-delay: 0.6s; }
+    ul.nav-links li:nth-child(7) { animation-delay: 0.7s; }
+    ul.nav-links li:nth-child(8) { animation-delay: 0.8s; }
+    ul.nav-links li:nth-child(9) { animation-delay: 0.9s; }
 
     @keyframes fadeSlide {
       to {
@@ -407,7 +423,6 @@ nav {
 .notice-board {
         width: 100%;
         background-color: #cfd1ec;
-        border-left: 10px solid #042d79;
         border-radius: 10px;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         opacity: 0;
@@ -430,7 +445,6 @@ nav {
         color: #ffffff;
         background-color: #042d79;
         text-align: center;
-        border-top-right-radius: 10px;
       }
 
       .notice-board h3 {
@@ -473,6 +487,74 @@ nav {
         margin-right: 5px;
       }
 /*============================================== Notice end =================================================*/
+/*============================================== School about start =================================================*/
+ .school-welcome-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 1200px;
+            overflow: hidden;
+        }
+
+        /* School Image Styling */
+        .school-image {
+            flex: 1 1 40%;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .school-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* School Details (Text) Styling */
+        .school-details {
+            flex: 1 1 55%; /* টেক্সট এর জন্য একটু বেশি জায়গা দেওয়া হলো */
+            min-width: 300px;
+        }
+
+        .school-details h1 {
+            font-size: 18px;
+            color: #0056b3;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .school-details p {
+            font-size: 12px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            .school-welcome-section {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .school-image {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .school-details h1 {
+                font-size: 2rem;
+                text-align: center;
+            }
+            
+            .school-details p {
+                text-align: justify;
+            }
+        }
+/*============================================== School about end =================================================*/
 /*============================================== Calender start=================================================*/
 .calendar {
       background: white;
@@ -657,4 +739,66 @@ nav {
         width: 90%;
       }
     }
-/*============================================== kortipokkho শেষ=================================================*/    
+/*============================================== kortipokkho শেষ=================================================*/  
+/*--================================================= small notice start =============================================*/
+ .container {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+            gap: 20px; /* Adds space between the two sections */
+        }
+
+        /* Styling for each section (Club and Dictionary) */
+        .section-notice {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 8px;
+            width: 100%; /* Default width for mobile */
+        }
+
+        /* Style for the green title bar */
+        .section-title {
+            background-color: #6a9f45;
+            color: white;
+            padding: 7px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        /* Styling for the list itself (ul element) */
+        .section-notice ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Styling for each list item (li element) */
+       .section-notice ul li {
+            display: flex;
+            align-items: center;
+            padding: 5px 18px;
+            border-bottom: 1px solid #e9e9e9;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .section-notice ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Green checkmark */
+        .section-notice ul li::before {
+            content: '✔';
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-right: 15px;
+        }
+
+/*-================================================= small notce end ==============================================-*/
+     
