@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>শতকরা সার্কেল চার্ট</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f8f8f8;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .chart-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .chart-box {
+        background: #fff;
+        padding: 15px 15px 10px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        width: 100%;
+        text-align: center;
+      }
+
+      canvas {
+        display: block;
+        max-width: 100%;
+        height: 200px;
+        margin: 0px;
+        vertical-align: middle;
+      }
+
+      h3 {
+        margin: 8px 0 4px;
+        font-size: 18px;
+      }
+
+      .chart-labels {
+        margin-top: 4px;
+        font-size: 16px;
+        line-height: 1.4;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .label-item {
+        margin: 4px 0;
+      }
+
+      .color-box {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        margin-right: 6px;
+        vertical-align: middle;
+        border-radius: 3px;
+      }
+
+      @media (min-width: 768px) {
+        .chart-row {
+          flex-wrap: nowrap;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="chart-row">
+      <!-- ছাত্র ছাত্রী -->
+      <div class="chart-box">
+        <canvas id="chart1"></canvas>
+        <h3>ছাত্র/ছাত্রীর অনুপাত</h3>
+        <div class="chart-labels">
+          <div class="label-item">
+            <span class="color-box" style="background-color: #ff5733"></span>
+            ছাত্র: ৬০%
+          </div>
+          <div class="label-item">
+            <span class="color-box" style="background-color: #33ff57"></span>
+            ছাত্রী: ৪০%
+          </div>
+        </div>
+      </div>
+
+      <!-- শিক্ষক শিক্ষিকা -->
+      <div class="chart-box">
+        <canvas id="chart2"></canvas>
+        <h3>শিক্ষক/শিক্ষিকার অনুপাত</h3>
+        <div class="chart-labels">
+          <div class="label-item">
+            <span class="color-box" style="background-color: #1abc9c"></span>
+            শিক্ষক: ৭০%
+          </div>
+          <div class="label-item">
+            <span class="color-box" style="background-color: #9b59b6"></span>
+            শিক্ষিকা: ৩০%
+          </div>
+        </div>
+      </div>
+
+      <!-- আবাসিক অনাবাসিক -->
+      <div class="chart-box">
+        <canvas id="chart3"></canvas>
+        <h3>একাডেমিক অনুপাত</h3>
+        <div class="chart-labels">
+          <div class="label-item">
+            <span class="color-box" style="background-color: #f39c12"></span>
+            আবাসিক: ৩০%
+          </div>
+          <div class="label-item">
+            <span class="color-box" style="background-color: #2ecc71"></span>
+            অনাবাসিক: ৬০%
+          </div>
+          <div class="label-item">
+            <span class="color-box" style="background-color: #e74c3c"></span>
+            ডেকেয়ার: ১০%
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const createPie = (id, labels, data, colors) => {
+        new Chart(document.getElementById(id), {
+          type: 'doughnut',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: colors,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            cutout: '40%',
+            radius: '60%',
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    return `${context.label}: ${context.parsed}%`;
+                  }
+                }
+              },
+              title: {
+                display: false
+              }
+            }
+          }
+        });
+      };
+
+      // চার্ট তৈরি
+      createPie('chart1', ['ছাত্র', 'ছাত্রী'], [60, 40], ['#FF5733', '#33FF57']);
+      createPie('chart2', ['শিক্ষক', 'শিক্ষিকা'], [70, 30], ['#1abc9c', '#9b59b6']);
+      createPie('chart3', ['আবাসিক', 'অনাবাসিক', 'ডেকেয়ার'], [30, 60, 10], ['#f39c12', '#2ecc71', '#e74c3c']);
+    </script>
+  </body>
+</html>

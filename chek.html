@@ -1,13 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>শতকরা সার্কেল চার্ট</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+    }
+    .chart-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .chart-box {
+      background: #fff;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 300px; /* এই মানটি চার্টের বক্সের সর্বোচ্চ প্রস্থ নিয়ন্ত্রণ করে */
+      width: 100%;
+      text-align: center;
+    }
+    canvas {
+      max-width: 100%;
+      height: 150px;
+    }
+    h3 {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    .chart-labels {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 5px;
+      text-align: left;
+      display: flex;
+      flex-wrap: wrap; /* লেবেলগুলো লাইন শেষ হলে নিচে নামানোর জন্য */
+      justify-content: flex-start; /* লেবেলগুলো বাম দিক থেকে শুরু হবে */
+      gap: 10px 15px; /* সারি এবং কলামের মধ্যে ব্যবধান, প্রয়োজন মতো পরিবর্তন করুন */
+    }
+    .label-item {
+      /* flex-basis: calc(50% - 10px); */ /* যদি প্রতি লাইনে ২টা করে চান, তাহলে এটি ব্যবহার করতে পারেন */
+      /* width: auto; */ /* লেবেলের কন্টেন্ট অনুযায়ী প্রস্থ */
+      margin: 4px 0; /* উল্লম্ব মার্জিন ঠিক রাখতে */
+    }
+    .color-box {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 3px;
+    }
+
+    @media (min-width: 768px) {
+      .chart-row {
+        flex-wrap: nowrap;
+      }
+    }
+  </style>
 </head>
 <body>
-<audio controls src="audio/school-song.mp3" style="width:100%;"></audio>
 
-    
+  <div class="chart-row">
+    <div class="chart-box">
+      <canvas id="chart1"></canvas>
+      <h3>ছেলে-মেয়ে অনুপাত</h3>
+      <div class="chart-labels">
+        <div class="label-item"><span class="color-box" style="background-color:#FF5733;"></span> প্লে: 8.8%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#33FF57;"></span> নার্সারি: 7.7%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#3357FF;"></span>১ম: 10.6%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#FF33A1;"></span> ২য়: 9.4%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#A133FF;"></span> ৩য়: 10.0%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#33FFF2;"></span> ৪র্থ: 9.4%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#F2FF33;"></span> ৫ম: 10.3%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#FF8333;"></span> ৬ষ্ঠ: 7.4%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#33FF83;"></span> ৭ম: 8.0%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#8333FF;"></span> ৮ম: 5.9%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#FF3383;"></span> ৯ম: 5.9%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#3383FF;"></span> ১০ম: 6.5%</div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <canvas id="chart2"></canvas>
+      <h3>শিক্ষক অনুপাত</h3>
+      <div class="chart-labels">
+        <div class="label-item"><span class="color-box" style="background-color:#1abc9c;"></span> পুরুষ: ৭০%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#9b59b6;"></span> নারী: ৩০%</div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <canvas id="chart3"></canvas>
+      <h3>জনসংখ্যা অনুপাত</h3>
+      <div class="chart-labels">
+        <div class="label-item"><span class="color-box" style="background-color:#f39c12;"></span> পুরুষ: ৬০%</div>
+<div class="label-item"><span class="color-box" style="background-color:#2ecc71;"></span> নারী: ৩৫%</div>
+        <div class="label-item"><span class="color-box" style="background-color:#e74c3c;"></span> হিজড়া: ৫%</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const createPie = (id, labels, data, colors) => {
+      new Chart(document.getElementById(id), {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: data,
+            backgroundColor: colors,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `${context.label}: ${context.parsed}%`;
+                }
+              }
+            },
+            title: {
+              display: false
+            }
+          }
+        }
+      });
+    };
+
+    // Chart 1
+    // 12টি লেবেল এবং 12টি ডেটা পয়েন্ট
+    createPie('chart1', 
+              ['প্লে','N','১ম', '২য়', '৩য়', '৪র্থ', '৫ম', '৬ষ্ঠ', '৭ম', '৮ম', '৯ম', '১০ম'], 
+              [8.8, 7.7, 10.6, 9.4, 10.0, 9.4, 10.3, 7.4, 8.0, 5.9, 5.9, 6.5],
+              ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#33FFF2', '#F2FF33', '#FF8333', '#33FF83', '#8333FF', '#FF3383', '#3383FF']);
+
+    // Chart 2
+    createPie('chart2', ['পুরুষ', 'নারী'], [70, 30], ['#1abc9c', '#9b59b6']);
+
+    // Chart 3
+    createPie('chart3', ['পুরুষ', 'নারী', 'হিজড়া'], [60, 35, 5], ['#f39c12', '#2ecc71', '#e74c3c']);
+  </script>
+
 </body>
 </html>

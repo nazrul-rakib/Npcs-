@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPcss Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            /* টেক্সট কালার */
+        }
+        
+        /* ফুটার এর মূল কন্টেইনার */
+        .footer {
+            background-color: #00004d;
+            /* ছবির ব্যাকগ্রাউন্ডের সাথে মেলানোর জন্য */
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+            /* মোবাইলে সেন্টারে আনার জন্য */
+        }
+        
+        .footer-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            /* মোবাইলে নিচে নিচে থাকবে */
+            align-items: center;
+            /* মোবাইলে কন্টেন্ট সেন্টারে আনার জন্য */
+        }
+        
+        .footer-section {
+            text-align: left;
+            /* কন্টেন্ট বাম দিকে থাকবে */
+            width: 90%;
+            /* মোবাইলে প্রায় পুরো প্রস্থজুড়ে থাকবে */
+            max-width: 400px;
+            /* মোবাইলে সর্বোচ্চ প্রস্থ */
+            box-sizing: border-box;
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        
+        .footer-section h3 {
+            margin: 20px 0 10px 0;
+            /* উপরে 20px মার্জিন, ডানে, নিচে, বামে 0 */
+            padding: 0px;
+            /* কোনো প্যাডিং থাকবে না */
+            font-size: 1.5em;
+            color: #fff;
+        }
+        
+        .footer-section p,
+        .footer-section ul {
+            font-size: 0.9em;
+            color: #f0f0f0;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0px;
+        }
+        
+        .footer-section ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+            padding: 5px 0px 0px 0px;
+        }
+        
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+            background: transparent;
+        }
+        
+        .footer-section p i {
+            color: #000;
+            /* আইকন এর কালার */
+        }
+        
+        .footer-copyright {
+            color: #333;
+            /* টেক্সট কালার */
+            text-align: center;
+            width: 100%;
+            /* পুরো প্রস্থজুড়ে থাকবে */
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 15px 0px;
+        }
+        
+        
+        .footer-copyright p {
+            color: white;
+            margin: 0px;
+            font-size: 0.85em;
+        }
+        
+        hr {
+            width: 95%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-section p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #f0f0f0;
+        }
+        
+        .dev-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        
+        .dev-icon .icon {
+            width: 25px;
+            height: 25px;
+            border: 4px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(118, 186, 241);
+            border-radius: 50%;
+        }
+        
+        .scl-icon {
+            justify-content: flex-start;
+            display: flex;
+            gap: 10px;
+            margin-top: 7px;
+        }
+        
+        .scl-icon .icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+        }
+        
+       .footer-copyright .dev-name {
+           color: yellow;
+       }
+        /* ডেস্কটপ বা বড় স্ক্রিনের জন্য মিডিয়া ক্যোয়ারি */
+        @media (min-width: 768px) {
+            .footer-content-wrapper {
+                flex-direction: row;
+                /* কম্পিউটারে পাশে পাশে থাকবে */
+                justify-content: space-around;
+                /* বক্সগুলির মধ্যে সমান দূরত্ব */
+                align-items: flex-start;
+                /* কন্টেন্ট উপরে থাকবে */
+                max-width: 100%;
+                /* সর্বোচ্চ প্রস্থ */
+            }
+            
+            .footer-section {
+                width: 30%;
+                /* তিনটি বক্সের জন্য আনুমানিক সমান প্রস্থ */
+                max-width: none;
+                /* সর্বোচ্চ প্রস্থের সীমাবদ্ধতা সরানো হলো */
+                text-align: left;
+                margin: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <footer class="footer">
+        <div class="footer-content-wrapper">
+            <div class="footer-section npcss-info">
+                <h3>NPcss</h3>
+                <p>শিক্ষাই জাতির মেরুদণ্ড। সুশিক্ষা নিশ্চিত করা হয় যুগোপযোগী পদ্ধতিতে। গুণগত শিক্ষা ও নৈতিকতার সমন্বয়ে শিক্ষার্থীদের সার্বিক বিকাশই আমাদের অঙ্গীকার। সৃজনশীলতা ও আধুনিক পদ্ধতির মাধ্যমে আমরা আগামী দিনের স্বপ্নদ্রষ্টাদের তৈরি করছি, শিক্ষার আলোয় আলোকিত এক নতুন প্রজন্ম গড়ে তোলাই আমাদের লক্ষ্য। আমরা শিক্ষার্থীদের সুপ্ত প্রতিভা বিকাশে এবং ভবিষ্যতের জন্য প্রস্তুত করতে বদ্ধপরিকর।</p>
+            </div>
+            
+            <div class="footer-section nav-links">
+                <h3>Nazrul Pre-cadet School, Shibram</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Abashik</a></li>
+                    <li><a href="#">Student</a></li>
+                    <li><a href="#">Teacher</a></li>
+                    <li><a href="#">Staff</a></li>
+                    <li><a href="#">Notice</a></li>
+                    <li><a href="#">Gallery</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section contact-info">
+                <h3>Contact</h3>
+                <p> Shibram, Saitantola, Sundargonj, Gaibandha.</p>
+                <p>01816425411</p>
+                <p>npcsschool2008@gmail.com</p>
+                <div class="scl-icon">
+                    <div class="icon"><a href="#"><i class="fa-brands fa-facebook"></i></a></div>
+                <div class="icon"><a href="#"><i class="fa-brands fa-whatsapp"></i></a></div>
+                <div class="icon"><a href="#"><i class="fa-brands fa-tiktok"></i></a></div>
+                
+                </div>
+            </div>
+        </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <hr>
+            <p>&copy; 2025[Npcss]. All Rights Reserved.</p>
+            <p>Developed by <span class="dev-name"> RK Rakib khan</span></p>
+            <div class="dev-icon school-contact">
+                <div class="icon"><a href="#"><i class="fa-brands fa-facebook"></i></a></div>
+                <div class="icon"><a href="#"><i class="fa-brands fa-whatsapp"></i></a></div>
+                <div class="icon"><a href="#"><i class="fa-brands fa-tiktok"></i></a></div>
+                
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
