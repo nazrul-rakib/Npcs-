@@ -125,49 +125,26 @@ function renderCalendar() {
 renderCalendar();
 /* ========================================= Calender end ========================================*/
 /*--================================================= student cart start ==============================================-*/
-const counters = document.querySelectorAll(".number");
-let animated = false;
-
-function animateCount(el) {
-  const target = +el.getAttribute("data-target");
-  const speed = 2000;
-
-  let count = 0;
-  const increment = Math.ceil(target / speed);
-
-  const update = () => {
-    if (count < target) {
-      count += increment;
-      if (count > target) count = target;
-      el.innerText = count;
-      requestAnimationFrame(update);
-    } else {
-      el.innerText = target;
-    }
-  };
-
-  update();
-}
-
-function isInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom >= 0;
-}
-
-function handleScroll() {
-  if (animated) return;
+ const counters = document.querySelectorAll(".number");
 
   counters.forEach((counter) => {
-    if (isInViewport(counter)) {
-      animateCount(counter);
-    }
+    const target = +counter.getAttribute("data-target");
+    const duration = 2000; // মোট সময়
+    const stepTime = 20; // প্রতি স্টেপের সময় (ms)
+    const increment = Math.ceil(target / (duration / stepTime));
+    let count = 0;
+
+    const update = () => {
+      count += increment;
+      if (count > target) count = target;
+      counter.innerText = count;
+      if (count < target) {
+        setTimeout(update, stepTime);
+      }
+    };
+
+    update();
   });
-
-  animated = true;
-}
-
-window.addEventListener("scroll", handleScroll);
-window.addEventListener("load", handleScroll); // লোডের সময়ও চেক করবে
 /*--================================================= student cart end ==============================================-*/
 /*--============================================= student cart design start ==========================================-*/
 
