@@ -125,27 +125,59 @@ function renderCalendar() {
 renderCalendar();
 /* ========================================= Calender end ========================================*/
 /*--================================================= student cart start ==============================================-*/
- const counters = document.querySelectorAll(".number");
+ const numbers = document.querySelectorAll('.number');
+  let started = false;
 
-  counters.forEach((counter) => {
-    const target = +counter.getAttribute("data-target");
-    const duration = 2000; // মোট সময়
-    const stepTime = 20; // প্রতি স্টেপের সময় (ms)
-    const increment = Math.ceil(target / (duration / stepTime));
-    let count = 0;
+  function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom >= 0;
+  }
 
-    const update = () => {
-      count += increment;
-      if (count > target) count = target;
-      counter.innerText = count;
-      if (count < target) {
-        setTimeout(update, stepTime);
-      }
-    };
+  function startCounting() {
+    numbers.forEach(num => {
+      const target = +num.getAttribute('data-target');
+      let count = 0;
+      const increment = target / 100;
 
-    update();
+      const update = () => {
+        count += increment;
+        if (count < target) {
+          num.innerText = Math.ceil(count);
+          requestAnimationFrame(update);
+        } else {
+          num.innerText = target;
+        }
+      };
+
+      update();
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!started && Array.from(numbers).some(isInViewport)) {
+      startCounting();
+      started = true;
+    }
   });
+
 /*--================================================= student cart end ==============================================-*/
+/*--============================================= big about start ==========================================-*/
+    const cards = document.querySelectorAll('.cardbig');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.2,
+    });
+
+    cards.forEach(cardbig => {
+      observer.observe(cardbig);
+    });
+/*--============================================= big about end ============================================--*/
 /*--============================================= student cart design start ==========================================-*/
 
 /*--============================================= student cart design end ============================================-*/

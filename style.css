@@ -42,7 +42,7 @@ header {
   display: flex;
   max-width: 1100px;
   min-height: 100vh;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   margin: 0 auto;
   flex-wrap: wrap;
@@ -683,6 +683,61 @@ a:hover {
   }
 }
 /*--================================================= student cart end ==============================================-*/
+/*--============================================= big about start ==========================================-*/
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 40px 20px;
+    }
+
+    .cardbig {
+      background: #d6d4d4;
+      border-radius: 12px;
+      padding: 20px;
+      flex: 1 1 33.33%;
+      box-sizing: border-box;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin: 10px;
+      text-align: center;
+
+      /* Animation Defaults */
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.7s ease;
+    }
+
+    .cardbig.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cardbig i {
+      font-size: 40px;
+      color: #0f2379;
+      margin-bottom: 15px;
+    }
+
+    .cardbig h3 {
+      font-size: 20px;
+      color: #0f2379;
+      margin-bottom: 10px;
+    }
+
+    .cardbig p {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%;
+      }
+    }
+/*--============================================= big about end ============================================--*/
 /*--============================================= student cart design start ==========================================-*/
 /*--============================================= student cart design end ============================================-*/
 
@@ -692,8 +747,8 @@ a:hover {
   padding: 15px;
   border-radius: 15px;
   text-align: center;
-  max-width: 400px; 
-  margin: 10px auto;
+  max-width: 400px;
+  margin: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border: 3px solid #ff9800;
   position: relative;
@@ -820,12 +875,61 @@ a:hover {
   }
 }
 /*==============================================Calender end=================================================*/
+/*--================================================= 3 side start ========================================-*/
+.container-side {
+  width: 100%;
+  margin: 0px;
+  padding: 10px;
+  background: #0f2379;
+}
+
+.sidebox {
+  background-color: #b6bbff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0px 20px 20px 20px;
+}
+
+.sidebox h3 {
+  color: #0f2379;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+.sidebox p,
+.sidebox a {
+  margin: 8px 0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.sidebox i {
+  margin-right: 10px;
+  color: #000000;
+}
+
+.sidebox a:hover {
+  text-decoration: underline;
+  color: #ffeb3b;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+}
+/*--================================================= 3 side end ========================================-*/
 
 /*--================================================= google mad start ========================================--*/
 .map-container {
   width: 100%;
   height: 300px;
-  margin: 0 auto;
+  margin: 0px;
   border-radius: 10px;
   overflow: hidden;
 }
